@@ -1,0 +1,63 @@
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  line-height: 1;
+  position: relative;
+  overscroll-behavior: none;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+img {
+  pointer-events: none;
+}
+
+input,
+textarea {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  resize: none;
+}
+
+button,
+a {
+  all: unset;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+button:disabled {
+  pointer-events: none;
+}

@@ -1,0 +1,74 @@
+@use "./utils/mixins" as *;
+
+// viewport
+
+:root {
+  --viewport: 1440;
+
+  @include mobile {
+    --viewport: 375;
+  }
+}
+
+// fonts
+
+:root {
+  --font-suisse-intl-trial: "Suisse Intl Trial";
+  --font-sf-pro-text: "SF Pro Text";
+}
+
+// transitions
+
+:root {
+  --ease-default: cubic-bezier(0.24, 1, 0.36, 1);
+  --ease-modal: cubic-bezier(0.6, 0.14, 0, 1);
+  --ease-out-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0);
+
+  --duration-default: 0.4s;
+  --duration-slow: 0.6s;
+  --duration-very-slow: 0.8s;
+
+  --transition-default: var(--duration-default) var(--ease-in-out);
+  --transition-slow: var(--duration-slow) var(--ease-in-out);
+  --transition-very-slow: var(--duration-very-slow) var(--ease-in-out);
+}
+
+// colors
+
+:root {
+  --Black-100: #000000;
+  --Black-150: #18181c;
+  --Black-200: rgba(24, 24, 28, 0.8);
+  --Black-300: #24242a;
+  --Black-400: #303038;
+  --Stroke-Primary: #2e2e36;
+  --Gray-30: #959ba4;
+  --Gray-40: #6f727c;
+  --Gray-70: #2e2e36;
+  --Text-Muted: #959ba4;
+  --White-100: #ffffff;
+  --Text-Primary: #eaeaeb;
+  --Opacity-10: rgba(255, 255, 255, 0.1);
+  --Opacity-20: rgba(255, 255, 255, 0.2);
+  --Blue-Button: linear-gradient(0deg, #0039b2 0%, #0051ff 50%, #002980 100%);
+  --Black-Button: linear-gradient(0deg, #141417 0%, #1f1f24 50%, #303038 100%);
+  --Red-Button: linear-gradient(
+    0deg,
+    #d50a40 0%,
+    #8a012c 50%,
+    rgb(150, 0, 0) 100%
+  );
+  --Error: #d94f74;
+}
+
+// z-index
+
+:root {
+  --z-bg: -1;
+  --z-header: 5;
+  --z-modal: 10;
+  --z-preloader: 11;
+}

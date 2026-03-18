@@ -1,0 +1,74 @@
+@use "./utils/mixins" as *;
+
+.underline {
+  --link-color: var(--White-100);
+  --stroke-height: 1px;
+  --delay: 0ms;
+  --duration: 800ms;
+  --easing: var(--ease-in-out);
+
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  color: var(--link-color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+    left: 0;
+    height: var(--stroke-height);
+    pointer-events: none;
+    background: var(--link-color);
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform var(--duration) var(--easing) var(--delay);
+  }
+
+  @include hover {
+    &:hover {
+      &::after {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.underline-reverse {
+  --link-color: var(--White-100);
+  --stroke-height: 1px;
+  --delay: 0ms;
+  --duration: 800ms;
+  --easing: var(--ease-in-out);
+
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  color: var(--link-color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+    left: 0;
+    height: var(--stroke-height);
+    pointer-events: none;
+    background: var(--link-color);
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform var(--duration) var(--easing) var(--delay);
+  }
+
+  @include hover {
+    &:hover {
+      &::after {
+        transform-origin: right;
+        transform: scaleX(0);
+      }
+    }
+  }
+}
