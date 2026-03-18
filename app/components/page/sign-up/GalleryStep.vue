@@ -39,9 +39,13 @@
 </template>
 
 <script setup lang="ts">
+import type { ProfileState } from "~~/shared"
+
 const emit = defineEmits<{
   (e: "back" | "continue"): void
 }>()
+
+const profile = useState<ProfileState>("profile")
 
 const form = reactive({
   galleryName: {
@@ -97,6 +101,9 @@ const handleContinue = () => {
     return
   }
 
+  profile.value.name = form.galleryName.value
+  profile.value.location = form.location.value
+  profile.value.boothNumber = form.boothNumber.value
   emit("continue")
 }
 </script>

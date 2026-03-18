@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Artwork, ModalState } from "~~/shared"
+import type { Artwork, ModalState, ProfileState } from "~~/shared"
 
-const fakeData: Artwork[] = [
+const _fakeData: Artwork[] = [
   {
     id: "1",
     title: "Artwork 1",
@@ -54,9 +54,29 @@ const fakeData: Artwork[] = [
   },
 ]
 
+const profileCookie = useCookie<ProfileState | null>("profile")
+
+const profile = useState<ProfileState>("profile", () => ({
+  email: "",
+  name: "",
+  location: "",
+  boothNumber: "",
+  logo: "",
+  website: "",
+  instagram: "",
+  about: "",
+}))
+
 useState("artworks", () => [])
 useState<ModalState>("modal", () => ({
   addArtwork: false,
   deleteArtwork: false,
+  message: false,
 }))
+
+onMounted(() => {
+  if (profileCookie.value) {
+    profile.value = profileCookie.value
+  }
+})
 </script>

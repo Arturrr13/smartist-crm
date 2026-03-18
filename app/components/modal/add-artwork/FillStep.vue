@@ -548,7 +548,7 @@ const handleSave = () => {
       form.dimensions.error.status
   })
 
-  if (artworkForms.value.every((form) => form.isError)) return false
+  if (artworkForms.value.some((form) => form.isError)) return false
 
   const nextArtworks = artworkForms.value.map((form) => ({
     id: crypto.randomUUID(),

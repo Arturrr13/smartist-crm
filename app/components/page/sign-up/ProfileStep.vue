@@ -63,9 +63,14 @@
 </template>
 
 <script setup lang="ts">
+import type { ProfileState } from "~~/shared"
+
 const emit = defineEmits<{
   (e: "back" | "continue"): void
 }>()
+
+const profile = useState<ProfileState>("profile")
+
 const MAX_LOGO_SIZE = 5 * 1024 * 1024
 
 const logoInputRef = ref<HTMLInputElement | null>(null)
@@ -150,6 +155,10 @@ const handleContinue = () => {
   ) {
     return
   }
+
+  profile.value.logo = form.logo.value
+  profile.value.website = form.website.value
+  profile.value.instagram = form.instagram.value
 
   emit("continue")
 }

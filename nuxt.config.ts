@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: "utf-8",
-      title: "Project Title",
+      title: "Smartist",
       htmlAttrs: {
         lang: "en",
       },
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
           content: "Smartist",
         },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     },
   },
 

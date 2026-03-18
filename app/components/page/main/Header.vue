@@ -4,12 +4,21 @@
 
     <div class="left-block">
       <button class="profile-button" />
-      <button class="default-btn exit-button" />
+      <button class="default-btn exit-button" @click="handleExit" />
     </div>
   </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { ProfileState } from "~~/shared"
+
+const profileCookie = useCookie<ProfileState | null>("profile")
+
+const handleExit = () => {
+  profileCookie.value = null
+  navigateTo("/sign-up")
+}
+</script>
 
 <style scoped lang="scss">
 .header {

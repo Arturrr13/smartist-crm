@@ -20,9 +20,14 @@
 </template>
 
 <script setup lang="ts">
+import type { ProfileState } from "~~/shared"
+
 const emit = defineEmits<{
   (e: "back" | "continue"): void
 }>()
+
+const profile = useState<ProfileState>("profile")
+const profileCookie = useCookie<ProfileState | null>("profile")
 
 const form = reactive({
   message: {
@@ -46,6 +51,10 @@ const handleContinue = () => {
   validateMessageValue()
 
   if (form.message.error.status) return
+
+  profile.value.about = form.message.value
+
+  profileCookie.value = profile.value
 
   navigateTo("/")
 }

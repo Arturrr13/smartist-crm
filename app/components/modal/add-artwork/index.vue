@@ -87,7 +87,9 @@ const isClosing = ref(false)
 const fileInputRef = ref<HTMLInputElement | null>(null)
 const isDragOver = ref(false)
 const selectedFiles = ref<File[]>([])
-const fillStepRef = ref<{ handleSave: () => void } | null>(null)
+const fillStepRef = ref<{
+  handleSave: () => boolean | Promise<boolean>
+} | null>(null)
 
 const closeModal = () => {
   isClosing.value = true
@@ -119,9 +121,21 @@ const handleDrop = (event: DragEvent) => {
   selectedFiles.value = normalizeFiles(event.dataTransfer?.files ?? null)
 }
 
+const triggerMessage = (type: "success" | "error") => {
+  if (modalState.value.message) return
+
+  modalState.value.message = type
+}
+
 const handleSave = async () => {
   const result = await fillStepRef.value?.handleSave()
-  if (result) closeModal()
+  if (result) {
+    closeModal()
+    triggerMessage("success")
+    return
+  }
+
+  triggerMessage("error")
 }
 </script>
 

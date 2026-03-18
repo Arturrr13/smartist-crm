@@ -43,11 +43,16 @@
 </template>
 
 <script setup lang="ts">
+import type { ProfileState } from "~~/shared"
+
 const emit = defineEmits<{
   (e: "continue"): void
 }>()
 
+const profile = useState<ProfileState>("profile")
+
 const handleContinue = () => {
+  profile.value.email = "test@test.com"
   emit("continue")
 }
 </script>
